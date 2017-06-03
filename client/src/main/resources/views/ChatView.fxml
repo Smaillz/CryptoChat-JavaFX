@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+
+<BorderPane fx:id="borderPane" maxHeight="620.0" maxWidth="1040.0" prefHeight="620.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.chatwindow.ChatController">
+   <center>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <ListView fx:id="chatPane" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="512.0" prefWidth="808.0" />
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" VBox.vgrow="NEVER">
+               <children>
+                  <TextArea fx:id="messageBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" onKeyPressed="#sendMethod" prefHeight="50.0" prefWidth="635.0" promptText="Enter Message..." scaleShape="false" wrapText="true">
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </TextArea>
+                  <Button fx:id="buttonSend" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="50.0" prefWidth="130.0" scaleShape="false" text="Send" textAlignment="CENTER" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="3.0" top="5.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="recordBtn" mnemonicParsing="false" onMousePressed="#recordVoiceMessage" prefHeight="50.0" prefWidth="62.0">
+                     <graphic>
+                        <ImageView fx:id="microphoneImageView" fitHeight="24.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/microphone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <VBox maxHeight="1.7976931348623157E308" prefHeight="540.0" prefWidth="187.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="onlineUsersHbox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="149.0" stylesheets="@../styles/ListViewStyle.css">
+               <children>
+                  <Label prefHeight="50.0" prefWidth="124.0" text="Online Users:" textAlignment="CENTER" textFill="#fc6747">
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="onlineCountLabel" prefHeight="28.0" prefWidth="110.0" text="0" textFill="#fc6747">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ListView fx:id="userList" focusTraversable="false" maxHeight="1.7976931348623157E308" prefHeight="495.0" prefWidth="182.0" style="-fx-border-image-width: 0;" stylesheets="@../styles/ListViewStyle.css">
+            </ListView>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="80.0" prefWidth="975.0" style="-fx-background-color: #000000;" BorderPane.alignment="CENTER">
+         <right>
+            <HBox prefHeight="80.0" prefWidth="86.0" stylesheets="@../styles/ButtonStyle.css" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="27.0" fitWidth="42.0" onMouseClicked="#logoutApplication" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                     <image>
+                        <Image url="@../images/logout.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="30.0" top="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" onMousePressed="#closeApplication" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                     <image>
+                        <Image url="@../images/close_normal.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="30.0" top="30.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </HBox>
+         </right>
+         <left>
+            <HBox prefHeight="80.0" prefWidth="82.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="userImageView" fitHeight="61.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/default.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children></HBox>
+         </left>
+         <center>
+            <VBox prefHeight="80.0" prefWidth="143.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="roomnameLabel" prefHeight="20.0" prefWidth="198.0" text="ChatRoom: #" textFill="#fa6648">
+                     <font>
+                        <Font name="HelveticaNeue Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="usernameLabel" prefHeight="20.0" prefWidth="195.0" text="User: #" textFill="#fa6648">
+                     <font>
+                        <Font name="HelveticaNeue Medium" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="3.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ComboBox fx:id="statusComboBox" prefHeight="25.0" prefWidth="111.0" promptText="Online" stylesheets="@../styles/ComboBox.css">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Online" />
+                           <String fx:value="Away" />
+                           <String fx:value="Busy" />
+                        </FXCollections>
+                     </items>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </top>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</BorderPane>

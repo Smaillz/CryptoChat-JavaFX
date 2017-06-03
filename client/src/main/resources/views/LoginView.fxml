@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+
+<BorderPane fx:id="borderPane" maxWidth="350.0" minWidth="327.0" prefHeight="413.0" prefWidth="327.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.login.LoginController">
+   <center>
+      <GridPane prefHeight="412.0" prefWidth="308.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="81.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="176.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="73.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="141.0" minHeight="0.0" prefHeight="113.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="192.0" minHeight="0.0" prefHeight="26.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="136.0" minHeight="12.0" prefHeight="26.0" />
+            <RowConstraints maxHeight="119.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="31.0" valignment="CENTER" />
+            <RowConstraints maxHeight="127.0" minHeight="0.0" prefHeight="12.0" valignment="CENTER" />
+         </rowConstraints>
+         <children>
+            <Button id="connectBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="45.0" prefWidth="84.0" stylesheets="@../styles/Login.css" text="Connect" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label prefHeight="17.0" prefWidth="76.0" text="Room Name" textAlignment="CENTER" textFill="#f89406" GridPane.rowIndex="5" />
+            <TextField fx:id="roomNameTextfield" prefWidth="188.0" text="public" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label prefHeight="17.0" prefWidth="68.0" text="Secret Key" textFill="#f89406" GridPane.rowIndex="6" />
+            <TextField fx:id="keyTextfield" prefHeight="25.0" prefWidth="146.0" text="default" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="Username: " textFill="#f89406" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="40.0" right="5.0" />
+               </GridPane.margin></Label>
+            <TextField fx:id="usernameTextfield" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="40.0" />
+               </GridPane.margin></TextField>
+            <Label prefHeight="22.0" prefWidth="95.0" text="Chat room details" textFill="#f89406" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></Label>
+            <StackPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="Defaultview" fitHeight="93" fitWidth="93" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/default.png" />
+                     </image>
+                     <StackPane.margin>
+                        <Insets top="20.0" />
+                     </StackPane.margin>
+                  </ImageView>
+                  <ImageView fx:id="Girlview" fitHeight="93.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image preserveRatio="false" smooth="false" url="@../images/women.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Boyview" fitHeight="93.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image preserveRatio="false" smooth="true" url="@../images/man.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Button id="MinimizedBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" maxHeight="24.0" maxWidth="68.0" minWidth="45.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="24.0" prefWidth="45.0" stylesheets="@../styles/Login.css">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button id="CloseBtn" fx:id="closeButton" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" maxHeight="24.0" maxWidth="68.0" minWidth="45.0" mnemonicParsing="false" onAction="#closeSystem" prefHeight="24.0" prefWidth="45.0" stylesheets="@../styles/Login.css">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+               <GridPane.margin>
+                  <Insets right="10.0" top="10.0" />
+               </GridPane.margin>
+            </HBox>
+            <ChoiceBox fx:id="imagePicker" prefHeight="25.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Default" />
+                     <String fx:value="Man" />
+                     <String fx:value="Women" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
+            <Label fx:id="selectedPicture" text="Label" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
